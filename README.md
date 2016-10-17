@@ -6,11 +6,11 @@ This sample is created with Cordova CLI, but the guildeline and plugin is for bo
 3. Unzip Pushe Cordova/Ionic that you have downloaded. Open `cordova-plugin-1.0.0/plugin.xml` file and replace PUSHE_TOKEN with your token. You can obtain your token from your panel on http://panel.pushe.co, under the application you have created for your Cordova/Ionic app.
 4. Run below command to add plugin to your app. If you use Cordova:
 
-`cordova plugin add [path-to-downloaded-plugin]`
+    `cordova plugin add [path-to-downloaded-plugin]`
 
-And if you use ionic:
+    And if you use ionic:
 
-`ionic plugin add [path-to-downloaded-plugin]`
+    `ionic plugin add [path-to-downloaded-plugin]`
 
 5. Open index.html file of your app and add below script to it:
 
