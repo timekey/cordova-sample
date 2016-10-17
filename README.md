@@ -8,7 +8,7 @@ This sample is created with Cordova CLI, but the guildeline and plugin is for bo
 
     `cordova plugin add [path-to-downloaded-plugin]`
 
-    And if you use ionic:
+    And if you are using ionic:
 
     `ionic plugin add [path-to-downloaded-plugin]`
 
