@@ -14,17 +14,13 @@ And if you use ionic:
 
 5. Open index.html file of your app and add below script to it:
 
-<script type="text/javascript">
-document.addEventListener("deviceready", deviceReady, true);
-function deviceReady() {
-window.pushe.initialize(); //This call is mandatory if you want to use Pushe
-}
-</script>
+        <script type="text/javascript">
+            document.addEventListener("deviceready", deviceReady, true);
+                function deviceReady() {
+                    window.pushe.initialize(); //This call is mandatory if you want to use Pushe
+                }
+        </script>
 
-://static.pushe.co/useful-links/sdk/pushe-0.10.0.zip) and extract it
-2. Click on `File` menu in Eclipse and go to `Android > Existing Android Code into Workspace` and browse extracted folder. Select `Copy projects into workspace` and import extracted folder.
-3. Right click on your project and go to `Properties>Android>Library` then add `Pushe` and `Google Play Services` as your project dependencies
-4. If you want to use ProGuard , add the content of `pushe-0.10.0/proguard.txt` to your `proguard-project.txt` file.
 
 ### Change AndroidManifest.xml
 
