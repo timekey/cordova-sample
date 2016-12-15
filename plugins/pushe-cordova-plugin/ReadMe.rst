@@ -28,14 +28,13 @@ For example, if you download it to *D:/development/pushe-cordova* and *pushe-cor
 
 .. code:: javascript
 
-<script type="text/javascript">
-document.addEventListener("deviceready", deviceReady, true);
-function deviceReady() {
-window.pushe.initialize(); //This call is mandatory if you want to use Pushe
-window.pushe.subscribe("my-topic"); //call this method to subscribe to a topic (optional). It has to be after Pushe become initialized.
-window.pushe.unsubscribe("my-topic"); //call this method to unsubscribe from a topic (optional).  It has to be after Pushe become initialized.
-}
-</script>
-
+    <script type="text/javascript">
+        document.addEventListener("deviceready", deviceReady, true);
+        function deviceReady() {
+            window.pushe.initialize(); //This call is mandatory if you want to use Pushe
+            window.pushe.subscribe("my-topic"); //call this method to subscribe to a topic (optional). It has to be after Pushe become initialized.
+            window.pushe.unsubscribe("my-topic"); //call this method to unsubscribe from a topic (optional).  It has to be after Pushe become initialized.
+        }
+    </script>
 
 - Then build and run your app. You should see Pushe initialization logs in android log-cat (if your device is connected to your computer with usb cable) and one new installation will appear in your panel on pushe.co in a few seconds. You can now send push notifications to your app.

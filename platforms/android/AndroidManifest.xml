@@ -1,7 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <manifest android:hardwareAccelerated="true" android:versionCode="1" android:versionName="0.0.1" package="co.ronash.pushesamplecordova" xmlns:android="http://schemas.android.com/apk/res/android">
     <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:resizeable="true" android:smallScreens="true" android:xlargeScreens="true" />
-    <uses-permission android:name="android.permission.INTERNET" />
     <application android:hardwareAccelerated="true" android:icon="@drawable/icon" android:label="@string/app_name" android:supportsRtl="true">
         <activity android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale" android:label="@string/activity_name" android:launchMode="singleTop" android:name="MainActivity" android:theme="@android:style/Theme.DeviceDefault.NoActionBar" android:windowSoftInputMode="adjustResize">
             <intent-filter android:label="@string/launcher_name">
@@ -64,12 +63,26 @@
                 <action android:name="co.ronash.pushe.service.ScreenStateService" />
             </intent-filter>
         </service>
-        <receiver android:name="co.ronash.pushe.receiver.PusheAppExistsReceiver">
+        <activity android:name="co.ronash.pushe.activities.WebviewActivity" />
+        <receiver android:name="co.ronash.pushe.receiver.AppUsageAlarmReceiver" />
+        <receiver android:exported="false" android:name="co.ronash.pushe.receiver.AddReceiver">
             <intent-filter>
-                <action android:name="co.ronash.pushe.NOTIFY_APP" />
+                <action android:name="com.evernote.android.job.ADD_JOB_CREATOR" />
             </intent-filter>
         </receiver>
-        <activity android:name="co.ronash.pushe.activities.WebviewActivity" />
+        <receiver android:name="co.ronash.pushe.receiver.AppChangeReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_INSTALL" />
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_FULLY_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="co.ronash.pushe.receiver.ConnectivityReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
         <service android:exported="true" android:name="com.evernote.android.job.gcm.PlatformGcmService" android:permission="com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE">
             <intent-filter>
                 <action android:name="com.google.android.gms.gcm.ACTION_TASK_READY" />
@@ -90,9 +103,11 @@
         </receiver>
         <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
         <meta-data android:name="co.ronash.pushe.token" android:value="PUSHE_76583046756" />
+        <meta-data android:name="co.ronash.pushe.cr" android:value="aHR0cDovLzcxOTI5YWQ2ZGEyNjQ4ZDhhMWE5ZDQxNmEwZGRmNWExOjE0ZTM5ZWMyZTE2OTRhNWM4MGNkNzMzYTIyYjlkZmE2QGNhLnB1c2hlLmNvLzQxNDI=" />
     </application>
     <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="23" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <permission android:name="co.ronash.pushesamplecordova.permission.C2D_MESSAGE" android:protectionLevel="signature" />

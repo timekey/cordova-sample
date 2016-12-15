@@ -10,7 +10,7 @@
     "pushe-cordova-plugin": {
         "source": {
             "type": "local",
-            "path": "/Users/Merka/Downloads/cordova-plugin-1.0.0"
+            "path": "/Users/Merka/AndroidStudioProjects/Ronash/pushe-my-work/pushe-cordova-release/pushe-cordova-me"
         },
         "is_top_level": true,
         "variables": {}
