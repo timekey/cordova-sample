@@ -1,5 +1,5 @@
 ===================================================
-Pushe Cordova Plugin for Android Users v. 1.0.0
+Pushe Cordova Plugin for Android Users v. 1.1.0
 ===================================================
 
 This is a plugin for Pushe android library for Cordova and other Cordova-base users (like Ionic and PhoneGap) which enables them to integrate Pushe into their applications.
@@ -21,7 +21,7 @@ For example, if you download it to *D:/development/pushe-cordova* and *pushe-cor
 ``ionic plugin add D:/development/pushe-cordova-plugin``
 
 - Login to your panel on pushe.co and create a new application with the package name of your ionic app.
-- Edit *plugin.xml* file in *pushe-cordova-plugin* folder and replace "PUSHE_TOKEN" with the token of your app. Your token is shown in your panel for this app.
+- Edit *plugin.xml* file in *pushe-cordova-plugin* folder and replace "PUSHE_TOKEN" with the token of your app. Also replace "PUSHE_CR" with crash report token which is given to you. These tokens are shown in your panel for this app.
 
 - Add below lines to your app's *index.html* file. Please note that this is an example and you should call subscribe() and unsbscribe() after initialization has finished.
 

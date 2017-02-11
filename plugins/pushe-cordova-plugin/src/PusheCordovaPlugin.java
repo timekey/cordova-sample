@@ -32,6 +32,8 @@ public class PusheCordovaPlugin extends CordovaPlugin {
             setNotificationOff(callbackContext);
         else if ("setNotificationOn".equals(action))
             setNotificationOn(callbackContext);
+        else if ("isPusheInitialized".equals(action))
+            isPusheInitialized(callbackContext);
         else if ("jsonCallback".equalsIgnoreCase(action))
             mCallback = callbackContext;
         return true;
@@ -76,6 +78,16 @@ public class PusheCordovaPlugin extends CordovaPlugin {
             callbackContext.success();
         } catch (Exception e) {
             callbackContext.error("Error in Pushe.setNotificationOn(). Error: " + e.getMessage());
+        }
+    }
+    
+    private boolean isPusheInitialized(CallbackContext callbackContext){
+        try {
+            return Pushe.isPusheInitialized(this.cordova.getActivity());
+            //callbackContext.success();
+        } catch (Exception e) {
+            callbackContext.error("Error in Pushe.isPusheInitialized(). Error: " + e.getMessage());
+            return false;
         }
     }
 

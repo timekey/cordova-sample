@@ -54,6 +54,15 @@ console.log("pushe plugin loaded.");
                  },"PusheCordovaPlugin","setNotificationOn",[]);
     }
 
+    pushe.isPusheInitialized = function(){
+        console.log("Executing Pushe.isPusheInitialized ...");
+        cordova.exec(function(result){
+                 console.log("Execution succeeded", result);
+                 },
+                 function(result){
+                 /*alert("Error" + reply);*/
+                 },"PusheCordovaPlugin","isPusheInitialized",[]);
+    }
 
 
     pushe.jsonCallback = function(callbackToUser){
@@ -68,4 +77,5 @@ console.log("pushe plugin loaded.");
     }
 
 module.exports = pushe;
+
 });
