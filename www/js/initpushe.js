@@ -6,5 +6,8 @@ function deviceReady() {
                                     window.pushe.sendAdvancedNotifToUser("Pid_ac70-e04e-3a", "{ \"title\":\"test\", \"content\":\"sent from client\" }");
                                     }
                                     });
+    window.pushe.getPusheId(function pidCallnack(pid){
+                            console.log("pid is: " + pid);
+                                    });
     
 }

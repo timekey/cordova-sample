@@ -64,6 +64,18 @@ console.log("pushe plugin loaded.");
                  },"PusheCordovaPlugin","isPusheInitialized",[]);
     }
 
+    pushe.getPusheId = function(pidCallback){
+        console.log("Executing Pushe.getPusheId ...");
+        cordova.exec(function(result){
+                     console.log("Pushe.getPusheId Execution succeeded", result);
+                     pidCallback(result);
+                 },
+                 function(result){
+                 /*alert("Error" + reply);*/
+                 },"PusheCordovaPlugin","getPusheId",[]);
+    }
+
+
     pushe.sendSimpleNotifToUser = function(userPusheId, title, content){
         console.log("Executing Pushe.sendSimpleNotifToUser ...");
         cordova.exec(function(result){

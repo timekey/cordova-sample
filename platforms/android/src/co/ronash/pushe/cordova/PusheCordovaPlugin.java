@@ -35,6 +35,9 @@ public class PusheCordovaPlugin extends CordovaPlugin {
             setNotificationOn(callbackContext);
         else if ("isPusheInitialized".equals(action))
             isPusheInitialized(callbackContext);
+        else if ("getPusheId".equals(action))
+            getPusheId(callbackContext);
+
         
         else if ("sendSimpleNotifToUser".equals(action))
             sendSimpleNotifToUser(args, callbackContext); 
@@ -99,6 +102,16 @@ public class PusheCordovaPlugin extends CordovaPlugin {
             callbackContext.error("Error in Pushe.isPusheInitialized(). Error: " + e.getMessage());            
         }
     }
+
+    private void getPusheId(CallbackContext callbackContext){
+        try {
+            String pid = Pushe.getPusheId(this.cordova.getActivity());
+            callbackContext.sendPluginResult(new PluginResult(Status.OK, pid));
+        } catch (Exception e) {
+            callbackContext.error("Error in Pushe.getPusheId. Error: " + e.getMessage());
+        }
+    }
+
     
     private void sendSimpleNotifToUser(JSONArray args, CallbackContext callbackContext){
         try {
