@@ -5,6 +5,7 @@ import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CordovaWebView;
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.PluginResult;
+import org.apache.cordova.PluginResult.Status;
 
 import android.content.Context;
 import android.content.Intent;
@@ -34,6 +35,14 @@ public class PusheCordovaPlugin extends CordovaPlugin {
             setNotificationOn(callbackContext);
         else if ("isPusheInitialized".equals(action))
             isPusheInitialized(callbackContext);
+        
+        else if ("sendSimpleNotifToUser".equals(action))
+            sendSimpleNotifToUser(args, callbackContext); 
+        else if ("sendCustomJsonToUser".equals(action))
+            sendCustomJsonToUser(args, callbackContext);
+        else if ("sendAdvancedNotifToUser".equals(action))
+            sendAdvancedNotifToUser(args, callbackContext);
+        
         else if ("jsonCallback".equalsIgnoreCase(action))
             mCallback = callbackContext;
         return true;
@@ -81,16 +90,52 @@ public class PusheCordovaPlugin extends CordovaPlugin {
         }
     }
     
-    private boolean isPusheInitialized(CallbackContext callbackContext){
+    private void isPusheInitialized(CallbackContext callbackContext){
         try {
-            return Pushe.isPusheInitialized(this.cordova.getActivity());
-            //callbackContext.success();
+            boolean result = Pushe.isPusheInitialized(this.cordova.getActivity());
+            callbackContext.sendPluginResult(new PluginResult(Status.OK, result));
+            //callbackContext.success(String.valueOf(result));
         } catch (Exception e) {
-            callbackContext.error("Error in Pushe.isPusheInitialized(). Error: " + e.getMessage());
-            return false;
+            callbackContext.error("Error in Pushe.isPusheInitialized(). Error: " + e.getMessage());            
         }
     }
+    
+    private void sendSimpleNotifToUser(JSONArray args, CallbackContext callbackContext){
+        try {
+            String userPusheId = args.getString(0);
+            String title = args.getString(1);
+            String content = args.getString(2);
+            Pushe.sendSimpleNotifToUser(this.cordova.getActivity(), userPusheId, title, content);
+            callbackContext.success();
+        } catch (Exception e) {
+            callbackContext.error("Error in Pushe.sendSimpleNotifToUser(). Error: " + e.getMessage());
+        }
+        
+    }
 
+    private void sendAdvancedNotifToUser(JSONArray args, CallbackContext callbackContext){
+        try {
+            String userPusheId = args.getString(0);
+            String notificationJson = args.getString(1);
+            Pushe.sendAdvancedNotifToUser(this.cordova.getActivity(), userPusheId, notificationJson);
+            callbackContext.success();
+        } catch (Exception e) {
+            callbackContext.error("Error in Pushe.sendAdvancedNotifToUser(). Error: " + e.getMessage());
+        }
+        
+    }
+
+    private void sendCustomJsonToUser(JSONArray args, CallbackContext callbackContext){
+        try {
+            String userPusheId = args.getString(0);
+            String customJson = args.getString(1);
+            Pushe.sendCustomJsonToUser(this.cordova.getActivity(), userPusheId, customJson);
+            callbackContext.success();
+        } catch (Exception e) {
+            callbackContext.error("Error in Pushe.sendCustomJsonToUser(). Error: " + e.getMessage());
+        }
+        
+    }
 
     public static class CustomContentListener extends PusheListenerService {
         public CustomContentListener() {

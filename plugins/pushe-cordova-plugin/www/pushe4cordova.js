@@ -53,22 +53,52 @@ console.log("pushe plugin loaded.");
                  },"PusheCordovaPlugin","setNotificationOn",[]);
     }
 
-    pushe.isPusheInitialized = function(){
+    pushe.isPusheInitialized = function(pusheInited){
         console.log("Executing Pushe.isPusheInitialized ...");
         cordova.exec(function(result){
-                 console.log("Execution succeeded", result);
+                     console.log("Pushe.isPusheInitialized Execution succeeded", result);
+                     pusheInited(result);
                  },
                  function(result){
                  /*alert("Error" + reply);*/
                  },"PusheCordovaPlugin","isPusheInitialized",[]);
     }
 
+    pushe.sendSimpleNotifToUser = function(userPusheId, title, content){
+        console.log("Executing Pushe.sendSimpleNotifToUser ...");
+        cordova.exec(function(result){
+                 console.log("Execution succeeded", result);
+                 },
+                 function(result){
+                 /*alert("Error" + reply);*/
+                 },"PusheCordovaPlugin","sendSimpleNotifToUser",[userPusheId, title, content]);
+    }
+
+    pushe.sendAdvancedNotifToUser = function(userPusheId, notificationJson){
+        console.log("Executing Pushe.sendAdvancedNotifToUser ...");
+        cordova.exec(function(result){
+                 console.log("Execution succeeded", result);
+                 },
+                 function(result){
+                 /*alert("Error" + reply);*/
+                 },"PusheCordovaPlugin","sendAdvancedNotifToUser",[userPusheId, notificationJson]);
+    }
+
+    pushe.sendCustomJsonToUser = function(userPusheId, customJson){
+        console.log("Executing Pushe.sendCustomJsonToUser ...");
+        cordova.exec(function(result){
+                 console.log("Execution succeeded", result);
+                 },
+                 function(result){
+                 /*alert("Error" + reply);*/
+                 },"PusheCordovaPlugin","sendCustomJsonToUser",[userPusheId, customJson]);
+    }
 
     pushe.jsonCallback = function(callbackToUser){
         console.log("Setting Json Callback");
         cordova.exec(function(jsonMsg){
                     console.log("JsonReceiver callback has been fired." + JSON.stringify(jsonMsg));
-                     callbackToUser(jsonMsg)
+                     callbackToUser(jsonMsg);
                  },
                  function(result){
                      /*alert("Error" + reply);*/

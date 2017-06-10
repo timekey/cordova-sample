@@ -10,7 +10,7 @@
     "pushe-cordova-plugin": {
         "source": {
             "type": "local",
-            "path": "../../pushe-cordova-release/cordova-plugin"
+            "path": "../../pushe-my-work/pushe-cordova-release/cordova-plugin"
         },
         "is_top_level": true,
         "variables": {}

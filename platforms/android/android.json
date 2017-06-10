@@ -47,11 +47,11 @@
                             "count": 1
                         },
                         {
-                            "xml": "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\" />",
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
                             "count": 1
                         },
                         {
-                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\" />",
                             "count": 1
                         },
                         {
@@ -176,15 +176,16 @@
     "dependent_plugins": {},
     "modules": [
         {
-            "file": "plugins/pushe-cordova-plugin/www/pushe4cordova.js",
             "id": "pushe-cordova-plugin.pushe",
+            "file": "plugins/pushe-cordova-plugin/www/pushe4cordova.js",
+            "pluginId": "pushe-cordova-plugin",
             "clobbers": [
                 "pushe"
             ]
         }
     ],
     "plugin_metadata": {
-        "cordova-plugin-whitelist": "1.3.0",
-        "pushe-cordova-plugin": "1.2.0"
+        "cordova-plugin-whitelist": "1.3.2",
+        "pushe-cordova-plugin": "1.3.0"
     }
 }
